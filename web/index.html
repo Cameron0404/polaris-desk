@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Polaris</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="star" aria-hidden="true">✦</span> POLARIS <span id="clock" class="dim"></span></div>
+  <nav id="nav">
+    <button data-screen="home" title="h">Home</button>
+    <button data-screen="questions" title="q">Questions <span class="badge" id="nQ"></span></button>
+    <button data-screen="answers" title="A">Answers</button>
+    <button data-screen="run" title="r">Run these <span class="badge" id="nR"></span></button>
+    <button data-screen="terminal" title="`">Terminal</button>
+  </nav>
+  <div id="live" class="dim">connecting…</div>
+</header>
+<div id="examplebar" class="examplebar" hidden>Showing example data. Run <code>./setup.sh --no-examples</code> or point POLARIS_HOME at your own folder to replace it.</div>
+
+<main>
+  <!-- Home -->
+  <section id="s-home" class="screen">
+    <div class="home">
+      <div class="col">
+        <div class="card"><div class="label">AGENTS <span id="agN" class="count"></span></div><div id="agents"></div></div>
+        <div class="card"><div class="label">JOBS TODAY <span id="jobN" class="count"></span></div><div id="jobs"></div></div>
+        <div class="card"><div class="label">HEADLINE</div><div id="headline" class="dim"></div></div>
+      </div>
+      <div class="centre">
+        <div class="orbwrap">
+          <canvas id="orb3d" class="orb" width="520" height="520" aria-label="status orb"></canvas>
+          <canvas id="orb2d" class="orb" width="520" height="520" aria-hidden="true"></canvas>
+        </div>
+        <div id="why" class="why" role="button" tabindex="0" title="acknowledge"></div>
+        <div id="stateline" class="stateline dim"></div>
+        <div class="chips" id="chips">
+          <button data-chip="auto" class="on">Auto</button><button data-chip="idle">Idle</button><button data-chip="working">Working</button><button data-chip="error">Error</button>
+          <button data-chip="pause">pause motion</button>
+        </div>
+        <form id="sendform" class="send"><input id="sendbox" autocomplete="off" placeholder="/ to type a message for your session (written to inbox.jsonl)"><button>Send</button></form>
+        <div id="footer" class="dim footer"></div>
+      </div>
+      <div class="col">
+        <div class="card" id="homeQ"><div class="label">QUESTION <span id="qN" class="count"></span></div><div id="topq"></div></div>
+        <div class="card" id="homeR"><div class="label">RUN THESE <span id="rN" class="count"></span></div><div id="homeRun"></div></div>
+        <div class="card"><div class="label">ERRORS</div><div id="errors" class="dim">none</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section id="s-questions" class="screen" hidden>
+    <h2>What is waiting on my answer <span id="qLater" class="dim"></span></h2>
+    <div id="qcard"></div>
+    <div id="qrest" class="list"></div>
+    <p class="keys dim">1 to 9 pick an option · Enter files the typed answer · s skip · l ask me later · d details</p>
+  </section>
+
+  <!-- Answers -->
+  <section id="s-answers" class="screen" hidden>
+    <h2>What came back from what I asked</h2>
+    <div id="answers" class="list"></div>
+  </section>
+
+  <!-- Run these -->
+  <section id="s-run" class="screen" hidden>
+    <h2>Commands an agent could not run itself</h2>
+    <p class="dim">Each is one line, checked every 10 minutes, and sooner when a new commit on the watched branch touches a file it names. A stale command has no Copy button.</p>
+    <div id="runlist" class="list"></div>
+  </section>
+
+  <!-- Terminal -->
+  <section id="s-terminal" class="screen" hidden>
+    <div class="termbar">
+      <div id="termtabs" class="termtabs"></div>
+      <button id="termNewShell" class="btn">+ shell</button>
+      <button id="termNewSession" class="btn">+ session</button>
+      <button id="termEnd" class="btn" style="display:none">End</button>
+    </div>
+    <div id="termnote" class="q dim"></div>
+    <div id="xtermwrap" class="xtermwrap"></div>
+  </section>
+</main>
+
+<div id="pinmodal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="pinTitle">
+  <div class="modalbox">
+    <div class="label">PINNED FOR YOU <span id="pinMore" class="dim"></span></div>
+    <h3 id="pinTitle"></h3>
+    <div id="pinBody" class="md"></div>
+    <div id="pinLink" class="dim"></div>
+    <div class="row-btns"><button id="pinOk" class="btn primary">Got it (Enter)</button><button id="pinLater" class="btn">Not now (Esc)</button></div>
+  </div>
+</div>
+<div id="toast" class="toast" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

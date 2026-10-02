@@ -1,0 +1,47 @@
+{
+ "example": true,
+ "headline": "Example data: a sync ran at dawn, one backup failed.",
+ "agents": {
+  "running": [
+   {
+    "id": "example-run-1",
+    "title": "Example: tidy the test fixtures",
+    "status": "running",
+    "started": "2026-01-05T08:40:00+00:00",
+    "model": "sonnet",
+    "doing": "rewriting fixture 3 of 7"
+   }
+  ],
+  "finished": [
+   {
+    "id": "example-run-0",
+    "title": "Example: draft the weekly report",
+    "status": "done",
+    "ended": "2026-01-05T07:55:00+00:00"
+   },
+   {
+    "id": "example-run-x",
+    "title": "Example: refresh the price cache",
+    "status": "killed",
+    "ended": "2026-01-05T06:10:00+00:00"
+   }
+  ]
+ },
+ "jobs": [
+  {
+   "label": "example sync job",
+   "status": "ok",
+   "when": "06:15"
+  },
+  {
+   "label": "example photo backup",
+   "status": "failed",
+   "when": "02:40"
+  },
+  {
+   "label": "example newsletter build",
+   "status": "pending",
+   "when": "18:30"
+  }
+ ]
+}

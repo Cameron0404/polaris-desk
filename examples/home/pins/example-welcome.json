@@ -1,0 +1,8 @@
+{
+ "id": "example-welcome",
+ "title": "Example pin: the report you asked for is ready",
+ "body": "This is an example pin. Pins pop up when Polaris opens, one at a time, until you dismiss them.\n\nWrite your own with `python3 -m polaris.pins add --title \"...\"`.",
+ "link": "reports/weekly.md",
+ "created": "2026-01-05T08:00:00+00:00",
+ "source": "example"
+}

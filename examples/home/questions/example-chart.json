@@ -1,0 +1,13 @@
+{
+ "id": "example-chart",
+ "example": true,
+ "question": "Example: which chart style for the weekly report?",
+ "options": [
+  "bars",
+  "lines",
+  "a table"
+ ],
+ "context": "Example data.",
+ "source": "example report agent",
+ "created": "2026-01-05T10:00:00+00:00"
+}

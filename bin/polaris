@@ -1,0 +1,19 @@
+#!/bin/bash
+# polaris: start the desk (every argument goes to `python3 -m polaris`).
+# Uses the repo's .venv when it can import pywebview (a native window), else python3 and the browser.
+#   ln -s "/path/to/polaris-desk/bin/polaris" ~/.local/bin/polaris    # to have it on PATH
+SELF="${BASH_SOURCE[0]}"
+while [ -L "$SELF" ]; do
+  LINK="$(readlink "$SELF")"
+  case "$LINK" in /*) SELF="$LINK" ;; *) SELF="$(dirname "$SELF")/$LINK" ;; esac
+done
+ROOT="$(cd "$(dirname "$SELF")/.." && pwd)"
+# Settings from .env in the repo, when there is one (see .env.example).
+if [ -f "$ROOT/.env" ]; then set -a; . "$ROOT/.env"; set +a; fi
+export POLARIS_REPO="${POLARIS_REPO:-$PWD}"
+cd "$ROOT"
+VENV="${POLARIS_VENV:-$ROOT/.venv}"
+if [ -x "$VENV/bin/python" ] && "$VENV/bin/python" -c "import webview" 2>/dev/null; then
+  exec "$VENV/bin/python" -m polaris "$@"
+fi
+exec python3 -m polaris "$@"

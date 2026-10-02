@@ -1,0 +1,24 @@
+{
+ "id": "example-blog-post",
+ "example": true,
+ "question": "Example: publish the draft blog post about the garden project now?",
+ "options": [
+  "publish",
+  "not yet"
+ ],
+ "context": "Example data. The draft is in drafts/garden-post.md and has passed the spelling check.",
+ "details": "**Example only.** A writing agent finished the draft and waits for a yes before it publishes anything.",
+ "source": "example writing agent",
+ "created": "2026-03-02T08:15:00+00:00",
+ "on_answer": {
+  "if": [
+   "publish"
+  ],
+  "queue": {
+   "title": "Publish the example blog post",
+   "at": "now",
+   "text": "Publish drafts/garden-post.md.",
+   "model": "sonnet"
+  }
+ }
+}

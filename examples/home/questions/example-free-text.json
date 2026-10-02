@@ -1,0 +1,9 @@
+{
+ "id": "example-free-text",
+ "example": true,
+ "question": "Example: what should the summary email's subject line say?",
+ "options": [],
+ "context": "Example data. Type any answer and press Enter.",
+ "source": "example writing agent",
+ "created": "2026-01-05T11:30:00+00:00"
+}

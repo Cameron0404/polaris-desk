@@ -47,7 +47,7 @@ your agents ──► $POLARIS_HOME/                       polaris/server.py (12
 1. Clone the repository and go into it.
 
    ```bash
-   git clone https://github.com/Cameron0404/polaris-desk.git
+   git clone https://github.com/cmills-dev/polaris-desk.git
    cd polaris-desk
    ```
 
